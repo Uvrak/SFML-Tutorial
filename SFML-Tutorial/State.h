@@ -2,16 +2,17 @@
 class State
 {
 private:
+	sf::RenderWindow* pWindow;
 	std::vector<sf::Texture>* textures;
 
 public:
 	//Constructors /Destructors
-	State();
+	State(sf::RenderWindow* pWindow);
 	virtual ~State();
 	
 	//Functions
-	virtual void update() = 0;
-	virtual void render() = 0;
+	virtual void update(const float& dt) = 0;
+	virtual void render(sf::RenderTarget* pTarget) = 0;
 
 };
 

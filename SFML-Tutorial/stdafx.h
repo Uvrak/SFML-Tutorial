@@ -1,5 +1,8 @@
 #include <iostream>
 #include <fstream>
+#include <stack>
+#include <map>
+#include <vector>
 
 #include "SFML\System.hpp"
 #include "SFML\Window.hpp"

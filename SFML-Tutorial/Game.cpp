@@ -4,11 +4,18 @@
 Game::Game()
 {
 	initWindow();
+	initStates();
 }
 
 Game::~Game()
 {
 	delete this->pWindow;
+
+	while (!this->states.empty()) 
+	{
+		delete this->states.top();
+		this->states.pop();
+	}
 }
 
 //Initializer functions
@@ -41,6 +48,11 @@ void Game::initWindow()
 	this->pWindow->setVerticalSyncEnabled(_vertical_sync_enabled);
 }
 
+void Game::initStates()
+{
+	this->states.push(new GameState(this->pWindow));
+}
+
 void Game::updateDt()
 {
 	/*Aktuallisiert die dt variable mit der Zeit die es braucht einden Frame zu updaten und zu rendern.*/
@@ -65,11 +77,17 @@ void Game::updateSFMLEvents()
 void Game::update()
 {
 	this->updateSFMLEvents();
+	if (!this->states.empty())
+		this->states.top()->update(this->dt);
 }
 
 void Game::render()
 {
 	this->pWindow->clear(sf::Color::Red);
+
+	if (!this->states.empty()) {
+		this->states.top()->render(this->pWindow);
+	}
 	this->pWindow->display();
 }
 
