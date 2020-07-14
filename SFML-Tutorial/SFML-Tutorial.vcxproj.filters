@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="States">
+      <UniqueIdentifier>{6dc24d17-398a-4961-8775-3abdc684229f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,8 +24,11 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Headerdateien</Filter>
     </ClCompile>
-    <ClCompile Include="State.cpp">
+    <ClCompile Include="Game.cpp">
       <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -30,7 +36,10 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="State.h">
-      <Filter>Headerdateien</Filter>
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Quelldateien</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

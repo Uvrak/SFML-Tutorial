@@ -1,7 +1,9 @@
 #include <stdafx.h>
+#include "Game.h"
 
 int main()
 {
-	std::cout << "Hallo Welt" << "\n";
+	Game game;
+	game.run();
 	return 0;
 }
