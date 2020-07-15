@@ -1,14 +1,19 @@
 #pragma once
 #include "State.h"
 #include "Entity.h"
+#include "Player.h"
 class GameState :
     public State
 {
 private:
 
-    Entity player;
+    Player* player;
     //Functions
     void initKeyinds();
+    void initTextures();
+    void initPlayers();
+
+ 
 public:
     //Constructors /Desturctors
     GameState(sf::RenderWindow* pWindow, std::map<std::string, int>* pSupportedKeys, std::stack<State*>* states);

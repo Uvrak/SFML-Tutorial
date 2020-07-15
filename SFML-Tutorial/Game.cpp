@@ -137,7 +137,7 @@ void Game::update()
 
 void Game::render()
 {
-	this->pWindow->clear(sf::Color::Red);
+	this->pWindow->clear();
 
 	if (!this->states.empty()) {
 		this->states.top()->render(this->pWindow);

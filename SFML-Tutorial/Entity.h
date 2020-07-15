@@ -17,11 +17,11 @@ public:
 	virtual ~Entity();
 
 	//Component functions
-	void createSprite(sf::Texture* texture);
+	void createSprite(float x, float y, sf::Texture* texture);
 
 	//Fuctions
-	virtual void move(const float dir_x, const float dir_y, const float& dt);
-	virtual void update(const float& dt) = 0;
+	void move(const float dir_x, const float dir_y, const float& dt);
+	void update(const float& dt);
     void render(sf::RenderTarget* pTarget);
 };
 
