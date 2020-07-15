@@ -15,6 +15,8 @@ private:
 
 	std::stack<State*> states;
 
+	std::map<std::string, int> supportedKeys;
+
 public:
 	//Constructors /Destructors
 	Game();
@@ -22,7 +24,9 @@ public:
 
 	//Initializer Functions
 	void initWindow();
+	void initKeys();
 	void initStates();
+	
 
 	//Functions
 	void updateDt();

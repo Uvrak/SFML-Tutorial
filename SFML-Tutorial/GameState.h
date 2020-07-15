@@ -5,13 +5,17 @@ class GameState :
     public State
 {
 private:
-public:
-    //Constructors /Desturctors
-    GameState(sf::RenderWindow* pWindow);
-    virtual ~GameState();
 
     //Functions
-    void endState();
+    void initKeyinds();
+public:
+    //Constructors /Desturctors
+    GameState(sf::RenderWindow* pWindow, std::map<std::string, int>* pSupportedKeys);
+    ~GameState();
+
+    //Functions
+    void initKeybinds();
+    void updateInput(const float& dt);
     void update(const float& dt);
     void render(sf::RenderTarget* pTarget);
 

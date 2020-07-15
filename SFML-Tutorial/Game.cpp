@@ -3,8 +3,10 @@
 
 Game::Game()
 {
-	initWindow();
-	initStates();
+	this->initWindow();
+	this->initKeys();
+	this->initStates();
+	
 }
 
 Game::~Game()
@@ -48,9 +50,18 @@ void Game::initWindow()
 	this->pWindow->setVerticalSyncEnabled(_vertical_sync_enabled);
 }
 
+void Game::initKeys()
+{
+	this->supportedKeys.emplace("ESCAPE", sf::Keyboard::Key::Escape);
+	this->supportedKeys.emplace("W", sf::Keyboard::Key::W);
+	this->supportedKeys.emplace("A", sf::Keyboard::Key::A);
+	this->supportedKeys.emplace("S", sf::Keyboard::Key::S);
+	this->supportedKeys.emplace("D", sf::Keyboard::Key::D);
+}
+
 void Game::initStates()
 {
-	this->states.push(new GameState(this->pWindow));
+	this->states.push(new GameState(this->pWindow, &this->supportedKeys));
 }
 
 void Game::updateDt()
@@ -77,8 +88,25 @@ void Game::updateSFMLEvents()
 void Game::update()
 {
 	this->updateSFMLEvents();
+	
 	if (!this->states.empty())
 		this->states.top()->update(this->dt);
+	
+	if (!this->states.empty())
+	{
+		this->states.top()->update(this->dt);
+		if (this->states.top()->getQuit())
+		{
+			std::cout << "Ending State:\n";
+			delete this->states.top();
+			this->states.pop();
+		}
+	}
+	else
+	{
+		this->pWindow->close();
+	}
+	
 }
 
 void Game::render()
