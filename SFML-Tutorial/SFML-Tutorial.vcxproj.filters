@@ -39,8 +39,11 @@
     <ClCompile Include="Entity.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Ressourcendateien</Filter>
+    </ClCompile>
     <ClCompile Include="MainMenuState.cpp">
-      <Filter>Quelldateien</Filter>
+      <Filter>States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -59,8 +62,11 @@
     <ClInclude Include="Entity.h">
       <Filter>Entities</Filter>
     </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Ressourcendateien</Filter>
+    </ClInclude>
     <ClInclude Include="MainMenuState.h">
-      <Filter>Headerdateien</Filter>
+      <Filter>States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
