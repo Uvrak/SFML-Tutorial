@@ -1,17 +1,24 @@
 #include "stdafx.h"
 #include "GameState.h"
 
-void GameState::initKeyinds()
+void GameState::initKeybinds()
 {
-	this->keybinds.emplace("MOVE_UP", this->supportedKeys->at("W"));
-	this->keybinds.emplace("MOVE_LEFT", this->supportedKeys->at("A"));
-	this->keybinds.emplace("MOVE_DOWN", this->supportedKeys->at("S"));
-	this->keybinds.emplace("MOVE_RIGHT", this->supportedKeys->at("S"));
-	this->keybinds.emplace("CLOSE", this->supportedKeys->at("ESCAPE"));
+	std::ifstream ifs("Config/gamestate_keybinds.ini");
+
+	if (ifs.is_open()) {
+		std::string key = "";
+		std::string key2 = "";
+
+		while (ifs >> key >> key2) {
+			this->keybinds[key] = this->pSupportedKeys->at(key2);
+		}
+	}
+	ifs.close();
+	
 }
 
 GameState::GameState(sf::RenderWindow* pWindow, std::map<std::string, int>* pSupportedKeys)
-	: State(pWindow, supportedKeys)
+	: State(pWindow, pSupportedKeys)
 {
 	this->initKeybinds();
 }
@@ -19,10 +26,6 @@ GameState::GameState(sf::RenderWindow* pWindow, std::map<std::string, int>* pSup
 GameState::~GameState()
 {
 
-}
-
-void GameState::initKeybinds()
-{
 }
 
 void GameState::updateInput(const float& dt)
@@ -33,9 +36,11 @@ void GameState::updateInput(const float& dt)
 void GameState::update(const float& dt)
 {
 	this->updateInput(dt);
-	std::cout << "Hello from GameState!\n";
+	//std::cout << "Hello from GameState!\n";
 }
 
 void GameState::render(sf::RenderTarget* pTarget)
 {
+	if (!pTarget)
+		pTarget = this->pWindow;
 }

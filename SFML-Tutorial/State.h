@@ -5,7 +5,7 @@ private:
 
 protected:
 	sf::RenderWindow* pWindow;
-	std::map<std::string, int>* supportedKeys;
+	std::map<std::string, int>* pSupportedKeys;
 	std::map<std::string, int> keybinds;
 	bool quit;
 
