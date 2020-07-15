@@ -17,8 +17,8 @@ void GameState::initKeybinds()
 	
 }
 
-GameState::GameState(sf::RenderWindow* pWindow, std::map<std::string, int>* pSupportedKeys)
-	: State(pWindow, pSupportedKeys)
+GameState::GameState(sf::RenderWindow* pWindow, std::map<std::string, int>* pSupportedKeys, std::stack<State*>* states)
+	: State(pWindow, pSupportedKeys, states)
 {
 	this->initKeybinds();
 }
@@ -30,7 +30,8 @@ GameState::~GameState()
 
 void GameState::updateInput(const float& dt)
 {
-	this->checkForQuit();
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("CLOSE"))))
+		this->endState();
 }
 
 void GameState::update(const float& dt)

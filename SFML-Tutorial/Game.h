@@ -11,6 +11,9 @@ private:
 	sf::RenderWindow* pWindow;
 	sf::Event sfEvent;
 
+	std::vector<sf::VideoMode> videoModes;
+	sf::ContextSettings windowSettings;
+	bool fullscreen;
 	sf::Clock dtClock;
 	float dt;
 
@@ -24,6 +27,7 @@ public:
 	virtual ~Game();
 
 	//Initializer Functions
+	void initVariables();
 	void initWindow();
 	void initKeys();
 	void initStates();

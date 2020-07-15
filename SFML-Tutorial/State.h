@@ -4,6 +4,7 @@ class State
 private:
 
 protected:
+	std::stack<State*> *states;
 	sf::RenderWindow* pWindow;
 	std::map<std::string, int>* pSupportedKeys;
 	std::map<std::string, int> keybinds;
@@ -21,15 +22,14 @@ protected:
 
 public:
 	//Constructors /Destructors
-	State(sf::RenderWindow* pWindow, std::map<std::string, int>* pSupportedKeys);
+	State(sf::RenderWindow* pWindow, std::map<std::string, int>* pSupportedKeys, std::stack<State*>* states);
 	virtual ~State();
 	
 	//Accessors
 	const bool& getQuit() const;
 	
 	//Functions
-	virtual void checkForQuit();
-
+	void endState();
 	virtual void updateMousePositions();
 
 	virtual void updateInput(const float& dt) = 0;

@@ -2,9 +2,13 @@
 class Entity
 {
 private:
+	//Functions
+	void initVariables();
 
 protected:
-	sf::RectangleShape shape;
+	sf::Texture* pTexture;
+	sf::Sprite *pSprite;
+	
 	float movementSpeed;
 
 public:
@@ -12,9 +16,12 @@ public:
 	Entity();
 	virtual ~Entity();
 
+	//Component functions
+	void createSprite(sf::Texture* texture);
+
 	//Fuctions
 	virtual void move(const float dir_x, const float dir_y, const float& dt);
 	virtual void update(const float& dt) = 0;
-	virtual void render(sf::RenderTarget* pTarget) = 0;
+    void render(sf::RenderTarget* pTarget);
 };
 

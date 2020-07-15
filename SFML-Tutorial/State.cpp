@@ -1,10 +1,12 @@
 #include "stdafx.h"
 #include "State.h"
 
-State::State(sf::RenderWindow* pWindow, std::map<std::string, int>* pSupportedKeys)
+State::State(sf::RenderWindow* pWindow, std::map<std::string, int>* pSupportedKeys, std::stack<State*>* states)
 {
 	this->pWindow = pWindow;
 	this->pSupportedKeys = pSupportedKeys;
+	this->states = states;
+	this->quit = false;
 }
 
 State::~State()
@@ -16,10 +18,9 @@ const bool& State::getQuit() const
 	return this->quit;
 }
 
-void State::checkForQuit()
+void State::endState()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key(this->keybinds.at("CLOSE"))))
-		this->quit = true;
+	this->quit = true;
 }
 
 void State::updateMousePositions()
