@@ -38,8 +38,11 @@ void MainMenuState::updateInput(const float& dt)
 
 void MainMenuState::update(const float& dt)
 {
+	this->updateMousePositions();
 	this->updateInput(dt);
-	//std::cout << "Hello from GameState!\n";
+	
+	system("cls");
+	std::cout << this->mousePosView.x << " " << this->mousePosView.y << "\n";
 }
 
 void MainMenuState::render(sf::RenderTarget* pTarget)
